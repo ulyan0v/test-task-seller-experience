@@ -1,21 +1,20 @@
-import React from "react";
-import {Switch, Route, Redirect} from 'react-router-dom';
-import Story from "./components/StoryPage/Story";
-import News from "./components/NewsPage/News";
-import Container from "react-bootstrap/Container";
+import React from 'react';
+import Routes from './components/Routes';
+import Popup from './components/Popup';
+import Loader from './components/Loader';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import './App.css';
+
 
 const App = () => {
   return (
     <Container>
-      <Switch>
-        <Route path='/news' exact>
-          <News />
-        </Route>
-        <Route path='/story/:id' exact>
-          <Story />
-        </Route>
-        <Redirect to='/news'/>
-      </Switch>
+      <Row>
+        <Routes />
+        <Loader />
+        <Popup />
+      </Row>
     </Container>
   );
 }

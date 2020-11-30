@@ -1,3 +1,8 @@
+const correctTime = timestamp => {
+  // time приходит без миллисекунд и некорректно отображается
+  return timestamp * 1000;
+}
+
 const storyRefToClient = story => {
   const {id, by, time, title, score} = story;
 
@@ -6,7 +11,7 @@ const storyRefToClient = story => {
     title,
     author: by,
     rating: score,
-    timestamp: time,
+    timestamp: correctTime(time),
   };
 }
 
@@ -18,20 +23,19 @@ const storyToClient = story => {
     url,
     title,
     author: by,
-    timestamp: time,
+    timestamp: correctTime(time),
     commentCount: descendants
   };
 }
 
 const commentToClient = comment => {
-  const {id, by, time, text, kids} = comment;
+  const {id, by, text, kids} = comment;
 
   return {
     id,
     text,
-    kids,
-    author: by,
-    timestamp: time,
+    kidsCount: kids?.length || 0,
+    author: by
   };
 }
 

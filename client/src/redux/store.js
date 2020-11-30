@@ -1,9 +1,13 @@
-import {applyMiddleware, combineReducers, createStore, compose} from "redux";
+import {applyMiddleware, combineReducers, createStore, compose} from 'redux';
 import thunk from 'redux-thunk';
-import mainReducer from "./mainReducer";
+import main from './reducers/main'
+import news from './reducers/news';
+import story from './reducers/story';
 
 const reducers = combineReducers({
-  main: mainReducer
+  main,
+  news,
+  story
 });
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
